@@ -1,0 +1,9 @@
+# Higiene del repositorio (mitigación H4 de la auditoría de seguridad 2026-10-24)
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+# inventario de red y artefactos de ejecución: sensibles, jamás al repo
+data/cache.sqlite3
+outputs/

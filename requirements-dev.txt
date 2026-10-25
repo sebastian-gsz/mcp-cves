@@ -1,0 +1,5 @@
+# Dependencias de desarrollo. El entorno de la sesión 2026-10-23 no tenía pip: pytest y ruff
+# se instalan cuando exista gestor de paquetes (ver NUC-004 y .github/workflows/ci.yml).
+-r requirements.txt
+pytest>=8.0
+ruff>=0.6

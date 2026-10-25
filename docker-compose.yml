@@ -1,0 +1,20 @@
+# docker-compose.yml — ejecución del escáner con capabilities mínimas (INF-001).
+# Uso: docker compose run --rm vulnscan
+services:
+  vulnscan:
+    build: .
+    image: mcp-cves:latest
+    user: scanner # consistencia con el USER del Dockerfile (nunca root)
+    cap_add:
+      - NET_RAW # ARP de scapy y SYN scan / OS fingerprint de nmap
+      - NET_ADMIN # requerido por algunos entornos para sockets raw
+    # red del host: imprescindible para escanear la LAN real desde el contenedor
+    # NOTA Docker Desktop: host = la VM de Docker, no el distro WSL; para LAN real usa
+    # Docker Engine nativo en el distro o una red dedicada con los objetivos dentro
+    # (ver ítem INF-001 en items/_done)
+    network_mode: host
+    volumes:
+      - ./data:/app/data # puertos_comunes.txt + cache.sqlite3 persistentes entre escaneos
+      - ./outputs:/app/outputs # informes CSV/PDF visibles en el host
+    stdin_open: true # la CLI pregunta objetivos y puertos por stdin
+    tty: true

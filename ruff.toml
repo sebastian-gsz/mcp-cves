@@ -1,0 +1,10 @@
+# Configuración de ruff — la misma que corre el CI (.github/workflows/ci.yml).
+[lint]
+ignore = [
+    # BLE001/S110/S112: los `except Exception` a ciegas son parte del DISEÑO (ley 11 del mapa
+    # maestro, degradación elegante): ante fallo de red o de parseo se degrada a la última
+    # copia buena o a un valor por defecto AVISANDO por consola; nunca se relanza.
+    "BLE001",
+    "S110",
+    "S112",
+]

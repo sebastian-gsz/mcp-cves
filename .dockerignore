@@ -1,0 +1,13 @@
+# Lo que no entra en la imagen (INF-001)
+.git
+.github
+__pycache__
+*.pyc
+.pytest_cache
+docs/
+tests/
+outputs/
+data/cache.sqlite3
+BLUEPRINT-ORQUESTADOR.md
+*.md
+!requirements*.txt
